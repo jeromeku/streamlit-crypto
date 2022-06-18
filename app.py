@@ -46,5 +46,5 @@ with open(export_path) as f:
     ecosystems = json.load(f)
 
 st.header("Parsed Ecosystems:")
-for k in ecosystems.keys():
+for k in sorted(ecosystems.keys()):
     st.write(f"\t{k}")
