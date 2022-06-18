@@ -1,5 +1,6 @@
 import streamlit as st
 import toml_parser
+import json
 import git
 import os
 
@@ -36,3 +37,9 @@ def fetch_repo(repo, path):
 fetch_repo(ECOSYSTEM_REPO, local_path)
 parse_toml(os.path.join(local_path, "data"), export_path)
 
+with open(export_path) as f:
+    ecosystems = json.load(f)
+
+st.header("Parsed Ecosystems:")
+for k in ecosystems.keys():
+    st.write(f"\t{k}")
