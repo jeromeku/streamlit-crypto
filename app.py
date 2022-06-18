@@ -3,13 +3,14 @@ import toml_parser
 import git
 import os
 
-LOCAL_ECOSYSTEM_DIR = "ecosystems"
-EXPORT_PATH = "ecosystems.json"
+local_path = os.environ.get("LOCAL_ECOSYSTEM_DIR", "data")
+export_path = os.environ.get("EXPORT_PATH", "projects.json")
+
 ECOSYSTEM_REPO = "https://github.com/electric-capital/crypto-ecosystems"
 
 st.info(f"Cloning Electric Capital repo {ECOSYSTEM_REPO}")
-git.Repo.clone_from(ECOSYSTEM_REPO, LOCAL_ECOSYSTEM_DIR)
+git.Repo.clone_from(ECOSYSTEM_REPO, local_path)
 
 with st.spinner("Parsing ecosystems TOML..."):
-    toml_parser.export(os.path.join(LOCAL_ECOSYSTEM_DIR, "data"), EXPORT_PATH)
-st.success(f"Done parsing!  Exported to {EXPORT_PATH}")
+    toml_parser.export(os.path.join(local_path, "data"), export_path)
+st.success(f"Done parsing!  Exported to {export_path}")
