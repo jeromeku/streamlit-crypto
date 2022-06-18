@@ -34,5 +34,5 @@ def fetch_repo(repo, path):
     st.write(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
     
 fetch_repo(ECOSYSTEM_REPO, local_path)
-parse_toml(local_path, export_path)
+parse_toml(os.path.join(local_path, "data"), export_path)
 
