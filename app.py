@@ -19,23 +19,28 @@ ECOSYSTEM_REPO = "https://github.com/electric-capital/crypto-ecosystems"
 
 @st.cache
 def parse_toml(input_path, output_path):
-    st.write(f"Parse count: {st.session_state[_parse_toml_count_key]}")
+    #st.write(f"Parse count: {st.session_state[_parse_toml_count_key]}")
     with st.spinner("Parsing ecosystems TOML..."):
         toml_parser.export(input_path, output_path)
     st.success(f"Done parsing!  Exported to {output_path}")
     st.session_state[_parse_toml_count_key] += 1
-    st.write(f"Parse count: {st.session_state[_parse_toml_count_key]}")
+    #st.write(f"Parse count: {st.session_state[_parse_toml_count_key]}")
 
 @st.cache
 def fetch_repo(repo, path):
-    st.write(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
+    #st.write(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
     st.info(f"Cloning Electric Capital repo {ECOSYSTEM_REPO}")
     git.Repo.clone_from(ECOSYSTEM_REPO, local_path)
     st.session_state[_fetch_repo_count_key] += 1
-    st.write(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
+    #st.write(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
     
+st.info(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
 fetch_repo(ECOSYSTEM_REPO, local_path)
+st.info(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
+
+st.write(f"Parse count: {st.session_state[_parse_toml_count_key]}")
 parse_toml(os.path.join(local_path, "data"), export_path)
+st.write(f"Parse count: {st.session_state[_parse_toml_count_key]}")
 
 with open(export_path) as f:
     ecosystems = json.load(f)
