@@ -147,3 +147,17 @@ def get_stats(df, freq="1M", columns=commit_parser.STAT_KEYS):
 
 stats = get_stats(df)
 st.dataframe(stats, width=1000, height=500)
+import altair as alt
+
+base = (
+    alt.Chart(stats.reset_index("date"))
+    .mark_circle(opacity=0.0)
+    .encode(
+        alt.X("date:T"),
+        alt.Y("commit_count:Q"),
+    )
+)
+
+chart = base + base.transform_loess("date", "commit_count", bandwidth=0.05).mark_area()
+
+st.altair_chart(chart, use_container_width=True)
