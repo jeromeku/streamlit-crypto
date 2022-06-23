@@ -1,3 +1,7 @@
 .venv
 toml-parser
 temp
+streamlit-observable
+data
+repos
+__pycache__
