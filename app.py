@@ -153,7 +153,7 @@ base = (
     alt.Chart(stats.reset_index())
     .mark_circle(opacity=0.0)
     .encode(
-        alt.X("author_date:T", title="", axis=alt.Axis(grid=False)),
+        alt.X("monthdate(author_date):O", title="", axis=alt.Axis(grid=False)),
         alt.Y(
             "commit_count:Q",
             title="Commit Count",
