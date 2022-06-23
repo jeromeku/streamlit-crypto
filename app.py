@@ -9,7 +9,6 @@ import git
 import os
 import pandas as pd
 import numpy as np
-from streamlit_observable import observable
 from commit_parser import CommitParser
 import commit_parser
 from ecosystem import Ecosystem
