@@ -163,7 +163,7 @@ base = (
 
 chart = (
     base
-    + base.transform_loess("author_date", "commit_count", bandwidth=0.05).mark_area()
+    + base.transform_loess("author_date", "commit_count", bandwidth=0.1).mark_area()
 )
 
 st.altair_chart(chart, use_container_width=True)
