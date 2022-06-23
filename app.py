@@ -97,11 +97,11 @@ def parse_repo(parser, repo):
 #   st.write(f"\t{k}")
 
 # st.info(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
-fetch_repo(ECOSYSTEM_REPO, LOCAL_PATH)
+# fetch_repo(ECOSYSTEM_REPO, LOCAL_PATH)
 # st.info(f"Fetch repo count: {st.session_state[_fetch_repo_count_key]}")
 
 # st.info(f"Parse count: {st.session_state[_parse_toml_count_key]}")
-parse_toml(os.path.join(LOCAL_PATH, "data"), EXPORT_PATH)
+# parse_toml(os.path.join(LOCAL_PATH, "data"), EXPORT_PATH)
 # st.info(f"Parse count: {st.session_state[_parse_toml_count_key]}")
 
 with open(EXPORT_PATH) as f:
